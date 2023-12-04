@@ -1,10 +1,10 @@
 %Main script for PONGLAB
 %Zak C-W 2023
 
-t = 1/40;
-vPaddle = 10;
+t = 1/40; %Timestep (between frames) in s
+vPaddle = 10; %Units/s
 vblock = [-20;10];
-[paddle1,paddleBot,block] = resetPlay();
+[paddle1,paddleBot,block] = resetPlay(); %Set paddles and ball to initial positions
 score = [0,0]; %[Player,CPU]
 fig = figure( 'Name', 'PONGLAB','keypressfcn',{@movePaddle,vPaddle,t});
 playing = 1;
@@ -14,11 +14,7 @@ while playing
     paddle1 = getappdata(0,'paddle1');
     paddleBot = paddleCPU(vPaddle,t,paddleBot, block);
     [block,vblock,result] = moveBlock(block,vblock,t,paddleBot);
-    if ~isequal(result, [0,0])
-        score = score + result;
-        [paddle1,paddleBot,block] = resetPlay();
-    end
-    %draw paddles and balls
+    %draw paddles and ball
     fill(paddle1(1,:),paddle1(2,:),'b')
     hold on
     fill(paddleBot(1,:),paddleBot(2,:),'r')
@@ -29,6 +25,21 @@ while playing
     axis([-10,10 -10 10])
     xlabel('PONGLAB - A Michaelmas Vacation Miniproject')
     axis square
-    grid minor
-    pause(t)
+    set(gca,'xtick',[],'ytick',[]) %Hide the axes
+    %End game or point
+    if ~isequal(result, [0,0])
+        score = score + result;
+        if score(1) >= 10 %Player wins
+            close(fig)
+            msgbox([strcat("Player: ",string(score(1))," CPU: ",string(score(2)));'Congratulations! You beat the computer'])
+            playing = 0;
+        elseif score(2) >= 10 %CPU wins
+            close(fig)
+            msgbox([strcat("Player: ",string(score(1))," CPU: ",string(score(2)));"Better luck next time "])
+            playing = 0;
+        else
+            [paddle1,paddleBot,block] = resetPlay();
+        end
+    end
+    pause(t) %Pause before redrawing
 end
