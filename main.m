@@ -3,7 +3,7 @@
 
 t = 1/40; %Timestep (between frames) in s
 vPaddle = 10; %Units/s
-vblock = [-20;10];
+vblock = [-25;15];
 [paddle1,paddleBot,block] = resetPlay(); %Set paddles and ball to initial positions
 score = [0,0]; %[Player,CPU]
 fig = figure( 'Name', 'PONGLAB','keypressfcn',{@movePaddle,vPaddle,t});
@@ -27,7 +27,7 @@ while playing
     axis square
     set(gca,'xtick',[],'ytick',[]) %Hide the axes
     %End game or point
-    if ~isequal(result, [0,0])
+    if ~isequal(result, [0,0]) %Some one has scored
         score = score + result;
         if score(1) >= 10 %Player wins
             close(fig)

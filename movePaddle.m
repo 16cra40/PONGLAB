@@ -3,13 +3,13 @@ function paddle = movePaddle(H,E,v,t)
 paddle = getappdata(0,'paddle1');
 
 if strcmp(E.Key,'uparrow')
-    paddle(2,:) = paddle(2,:)+v*t;
+    paddle(2,:) = paddle(2,:)+v*t; %Move up
 elseif strcmp(E.Key,'downarrow')
-    paddle(2,:) = paddle(2,:)-v*t;
+    paddle(2,:) = paddle(2,:)-v*t; %Move down
 end
 
 if max(paddle(2,:)) <= 10 && min(paddle(2,:)) >= -10 %Keep paddle on screen
-    setappdata(0, 'paddle1',paddle);
+    setappdata(0, 'paddle1',paddle); %Pass to draw function
 end
 
 end

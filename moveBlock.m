@@ -17,7 +17,7 @@ if min(testBlock(1,:)) < -10 %Player loses
     score = [0,1];
 elseif max(testBlock(1,:)) > 10 %CPU loses
     score = [1,0]; 
-else
+else %Play on
     score = [0,0];
 end
 if max(abs(testBlock(2,:))) > 10 %Collisions with floor / ceiling
