@@ -4,7 +4,7 @@ function [block,v,score] = moveBlock(block,v,t,paddleBot)
 %- velocity vector of the block [vx;vy], t - time step between frames
 %Returns: Block [x;y] coordinates, new velocity vector of the block [vx;vy]
 %, score[player,CPU]
-% Zak C-W 2023
+% Zak C-W
 testBlock = block+ v*t;
 paddle = getappdata(0,'paddle1');
 if min(testBlock(1,:)) < -9 && (min(testBlock(2,:)) < max(paddle(2,:)) && max(testBlock(2,:)) > min(paddle(2,:)))  %Check collisions with player's paddle

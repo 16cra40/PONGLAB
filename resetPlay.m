@@ -2,6 +2,7 @@ function [paddle1,paddleBot,block] = resetPlay()
 %Initialise positions of paddles and ball
 %Returns [x;y] for ball and paddles
 %Zak C-W
+
 block=[-0.5 0.5 0.5 -0.5 -0.5; -0.5 -0.5 0.5 0.5 -0.5]; %[x coords, y coords]
 if rand < 0.5 %Put the ball on a random serving position
     block = translateShape(block,-5,0);

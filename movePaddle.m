@@ -4,6 +4,7 @@ function paddle = movePaddle(H,E,v,t)
 % t - time step between frames,
 % H and E refer to linking the function to keypresses in the figure
 %Returns [x;y] coordinates of the player's paddle
+%Zak C-W
 paddle = getappdata(0,'paddle1');
 
 if strcmp(E.Key,'uparrow')

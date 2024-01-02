@@ -3,6 +3,7 @@ function [paddleBot] = paddleCPU(v,t,paddleBot,block)
 %paddle bot - [x;y] outline of paddle shape, block - [x;y] outline of ball,
 %t- timestep (s)
 %Returns the [x;y] coordinates of the Computer's paddle
+%Zak C-W
 
 blockC = mean(block(2,:)); %Centres of block and paddle
 paddleC = mean(paddleBot(2,:));

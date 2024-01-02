@@ -1,6 +1,6 @@
 %Main script for PONGLAB
 %See README.txt for more information
-%Zak C-W 2023
+%Zak C-W
 
 t = 1/40; %Timestep (between frames) in s
 vPaddle = 10; %Units/s
@@ -49,5 +49,5 @@ while playing
         end
     end
     pause(t) %Pause before redrawing
-    
+
 end
